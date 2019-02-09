@@ -1,0 +1,4 @@
+FROM ruby:2.4-alpine
+MAINTAINER AJ <sevaine@gmail.com>
+
+EXPOSE 80
