@@ -11,6 +11,6 @@ namespace :build do
       File.expand_path(
         File.dirname('.')), "docker/Dockerfile.#{APP}")
     puts "Building #{APP}:#{version}"
-    sh "docker build -t #{APP}:#{VERSION} -f #{dockerfile}"
+    sh "docker build -t #{APP}:#{version} -f #{dockerfile} ."
   end
 end
