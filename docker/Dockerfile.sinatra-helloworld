@@ -10,7 +10,15 @@ ENV PATH "bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 
 # Prepare the container
 WORKDIR /app
-RUN apk add --update nginx bash openssl\
+
+# Hardening 
+RUN apk add --update bash
+COPY ./docker/harden.sh /app/harden.sh
+RUN /bin/bash /app/harden.sh
+#RUN rm /app/harden.sh
+
+# Package installs
+RUN apk add --update nginx openssl\
   && rm -frv /var/cache/apk* \
   && chown -R nginx:www-data /var/lib/nginx
 RUN openssl req -subj \
