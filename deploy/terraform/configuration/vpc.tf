@@ -1,18 +1,5 @@
-provider "aws" {
-  region = "ap-southeast-2"
-}
-terraform {
-  required_version = ">= 0.11.1"
-  backend "s3" {
-    encrypt = "true"
-    bucket  = "sevaine-sandpit-tfconfig"
-    key     = "terraform.tfstate"
-    region  = "ap-southeast-2"
-  }
-}
-
 module "simple_vpc" {
-  source                          = "../../modules/simple_vpc"
+  source                          = "../modules/simple_vpc"
   aws_region                      = "ap-southeast-2"
   vpc_cidr                        = "192.168.16.0/20"
   publicdmz_subnet_a_cidr         = "192.168.16.0/24"
